@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ObstacleStructureManager : MonoBehaviour
 {
@@ -36,10 +38,11 @@ public class ObstacleStructureManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(-5f, 0, 0) * Time.deltaTime;
+        transform.Translate(Vector3.left * 3 * Time.deltaTime);
 
-        if (!gameObject.GetComponent<SpriteRenderer>().isVisible)
+        if (bottomObstacle.transform.position.x < despawnPoint.position.x)
         {
+            Debug.Log("Destroying Gameobject at " + transform.position.ToString());
             Destroy(this.gameObject);
         }
     }

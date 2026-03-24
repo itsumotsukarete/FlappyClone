@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="495df5f8-5d28-49c0-af71-fa85e3bd0b3e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FlappyClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlappyClone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ObstacleStructure.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ObstacleStructure.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ObstacleStructureManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ObstacleStructureManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1774163828193</updated>
       <workItem from="1774163829599" duration="1000" />
-      <workItem from="1774332129138" duration="2536000" />
+      <workItem from="1774332129138" duration="3911000" />
     </task>
     <servers />
   </component>
