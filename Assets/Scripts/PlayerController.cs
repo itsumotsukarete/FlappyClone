@@ -1,9 +1,9 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using TMPro;
 
 
 public class PlayerController : MonoBehaviour
@@ -11,9 +11,13 @@ public class PlayerController : MonoBehaviour
     private InputAction jumpAction;
     private bool isJumpPressed;
 
+    [SerializeField] private TMP_Text scoreText;
+    private int score = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        scoreText.text = "Score: " + score;
         jumpAction = InputSystem.actions.FindAction("Jump");
         isJumpPressed = false;
     }
@@ -43,5 +47,11 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        ++score;
+        scoreText.text = "Score: " + score;
     }
 }

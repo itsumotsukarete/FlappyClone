@@ -1,20 +1,26 @@
 using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Unity.Mathematics;
+using Unity.VisualScripting;
+
 
 public class ObstacleStructureManager : MonoBehaviour
 {
     [SerializeField] private GameObject topObstacle;
     [SerializeField] private GameObject bottomObstacle;
+    [SerializeField] private GameObject invisibleTrigger;
     [SerializeField] private Camera cam;
     [SerializeField] private GameObject ground;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform despawnPoint;
+    [SerializeField] private Transform playerPosRef;
 
     private float sceneHeight;
     private float groundHeight = 1f; //used to make sure obstacels spawn above ground. Will need to manually change but doubt I will want the ground to be any taller
     private float obsGap = 3f; //gap the player will need to jump through
     private float minObsSize = 2f; //currently want the smallest a obs can be to be 2 units
+    private int score = 0;
     
     //the largest a obs could be accounting for all other constraints. Will be used to randomly generate obs height
     private float maxObsSize; 
@@ -33,12 +39,15 @@ public class ObstacleStructureManager : MonoBehaviour
         float topObsHeight = sceneHeight - obsGap - bottomObsHeight;
         topObstacle.transform.localScale = new Vector2(1, topObsHeight);
         topObstacle.transform.position = new Vector2(spawnPoint.position.x, (sceneHeight / 2) - (topObsHeight / 2));
+        
+        invisibleTrigger.transform.position = new Vector2(spawnPoint.position.x, bottomObstacle.transform.position.y);
+        invisibleTrigger.transform.localScale = new Vector2(.1f, (math.abs(topObstacle.transform.position.y - bottomObstacle.transform.position.y)));
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * 3 * Time.deltaTime);
+        transform.Translate(3 * Vector3.left * Time.deltaTime);
 
         if (bottomObstacle.transform.position.x < despawnPoint.position.x)
         {
