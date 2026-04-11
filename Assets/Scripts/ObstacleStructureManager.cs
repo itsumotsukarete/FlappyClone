@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 
 
 public class ObstacleStructureManager : MonoBehaviour
@@ -29,9 +28,23 @@ public class ObstacleStructureManager : MonoBehaviour
     void Start()
     {
         sceneHeight = cam.orthographicSize * 2;
-
         maxObsSize = sceneHeight - obsGap - minObsSize - groundHeight;
+        GenObstacle();
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        transform.Translate(3 * Vector3.left * Time.deltaTime);
+
+        if (bottomObstacle.transform.position.x < despawnPoint.position.x)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void GenObstacle()
+    {
         float bottomObsHeight = Random.Range((int) minObsSize, (int) maxObsSize);
         bottomObstacle.transform.localScale = new Vector2(1, bottomObsHeight);
         bottomObstacle.transform.position = new Vector2(spawnPoint.position.x, ground.transform.position.y + (bottomObsHeight / 2) + (groundHeight / 2));
@@ -42,17 +55,5 @@ public class ObstacleStructureManager : MonoBehaviour
         
         invisibleTrigger.transform.position = new Vector2(spawnPoint.position.x, bottomObstacle.transform.position.y);
         invisibleTrigger.transform.localScale = new Vector2(.1f, (math.abs(topObstacle.transform.position.y - bottomObstacle.transform.position.y)));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(3 * Vector3.left * Time.deltaTime);
-
-        if (bottomObstacle.transform.position.x < despawnPoint.position.x)
-        {
-            Debug.Log("Destroying Gameobject at " + transform.position.ToString());
-            Destroy(this.gameObject);
-        }
     }
 }
