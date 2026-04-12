@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="495df5f8-5d28-49c0-af71-fa85e3bd0b3e" name="Changes" comment="" />
 <<<<<<< HEAD
     <list default="true" id="495df5f8-5d28-49c0-af71-fa85e3bd0b3e" name="Changes" comment="" />
 =======
@@ -116,7 +117,6 @@
 =======
       <workItem from="1775370957899" duration="1935000" />
       <workItem from="1775374630535" duration="1822000" />
->>>>>>> d87e4eecd1077eefdaa3628e8a243b659e3b4d1f
     </task>
     <servers />
   </component>
